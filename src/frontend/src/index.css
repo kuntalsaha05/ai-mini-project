@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light mode tokens */
+  :root {
+    --radius: 0.75rem;
+    --background: 0.96 0.018 252;
+    --foreground: 0.19 0.045 252;
+    --card: 1 0 0;
+    --card-foreground: 0.19 0.045 252;
+    --popover: 1 0 0;
+    --popover-foreground: 0.19 0.045 252;
+    --primary: 0.69 0.17 210;
+    --primary-foreground: 1 0 0;
+    --secondary: 0.49 0.28 278;
+    --secondary-foreground: 1 0 0;
+    --muted: 0.92 0.022 252;
+    --muted-foreground: 0.54 0.045 252;
+    --accent: 0.92 0.022 252;
+    --accent-foreground: 0.19 0.045 252;
+    --destructive: 0.62 0.22 27;
+    --destructive-foreground: 1 0 0;
+    --border: 0.88 0.028 252;
+    --input: 0.88 0.028 252;
+    --ring: 0.69 0.17 210;
+    --chart-1: 0.69 0.17 210;
+    --chart-2: 0.49 0.28 278;
+    --chart-3: 0.72 0.19 145;
+    --chart-4: 0.77 0.15 80;
+    --chart-5: 0.62 0.22 27;
+    --sidebar: 0.92 0.022 252;
+    --sidebar-foreground: 0.19 0.045 252;
+    --sidebar-primary: 0.69 0.17 210;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.88 0.028 252;
+    --sidebar-accent-foreground: 0.19 0.045 252;
+    --sidebar-border: 0.88 0.028 252;
+    --sidebar-ring: 0.69 0.17 210;
+  }
+
+  /* Dark mode tokens */
+  .dark {
+    --background: 0.135 0.03 250;
+    --foreground: 0.95 0.025 252;
+    --card: 0.21 0.036 248;
+    --card-foreground: 0.95 0.025 252;
+    --popover: 0.18 0.032 248;
+    --popover-foreground: 0.95 0.025 252;
+    --primary: 0.78 0.18 198;
+    --primary-foreground: 0.13 0.03 250;
+    --secondary: 0.58 0.24 278;
+    --secondary-foreground: 0.95 0.025 252;
+    --muted: 0.26 0.035 248;
+    --muted-foreground: 0.73 0.035 252;
+    --accent: 0.26 0.035 248;
+    --accent-foreground: 0.95 0.025 252;
+    --destructive: 0.65 0.22 27;
+    --destructive-foreground: 0.95 0.025 252;
+    --border: 0.32 0.03 248;
+    --input: 0.26 0.035 248;
+    --ring: 0.78 0.18 198;
+    --chart-1: 0.78 0.18 198;
+    --chart-2: 0.58 0.24 278;
+    --chart-3: 0.72 0.19 145;
+    --chart-4: 0.77 0.15 80;
+    --chart-5: 0.65 0.22 27;
+    --sidebar: 0.21 0.036 248;
+    --sidebar-foreground: 0.95 0.025 252;
+    --sidebar-primary: 0.78 0.18 198;
+    --sidebar-primary-foreground: 0.13 0.03 250;
+    --sidebar-accent: 0.26 0.035 248;
+    --sidebar-accent-foreground: 0.95 0.025 252;
+    --sidebar-border: 0.32 0.03 248;
+    --sidebar-ring: 0.78 0.18 198;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  .dark html,
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4), 0 0 60px
+      rgba(34, 211, 238, 0.15);
+  }
+
+  .purple-glow {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 60px
+      rgba(139, 92, 246, 0.15);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #22d3ee, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-glow {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.06)
+      inset;
+  }
+
+  .sudoku-cell-given {
+    color: oklch(var(--foreground));
+    font-weight: 600;
+  }
+
+  .sudoku-cell-solved {
+    color: oklch(var(--primary));
+    font-weight: 600;
+  }
+
+  .sudoku-cell-user {
+    color: oklch(var(--secondary));
+  }
+}
