@@ -1,0 +1,20 @@
+flowchart LR
+    U["User Browser"] --> FE["React + Vite SPA"]
+
+    subgraph Client_Runtime["Client Runtime"]
+      FE --> UIState["Component State + Animation"]
+      FE --> LocalStore["LocalStorage / URL Share State"]
+      FE --> ICPAuth["Internet Identity Provider"]
+      ICPAuth --> ICPActor["ICP Actor Client"]
+    end
+
+    FE -->|"HTTP GET /, /assets, routes"| PY["FastAPI Python Server"]
+    PY -->|"Serves static files"| DIST["Frontend Build Artifacts"]
+    PY --> HEALTH["/api/health"]
+
+    ICPActor -. "optional path" .-> CAN["Motoko Canister Backend (doNothing)"]
+
+    DEV["Developer Build Pipeline"] --> VITE["Vite Build"]
+    VITE --> DIST
+    DEV --> UVI["Uvicorn Runtime"]
+    UVI --> PY

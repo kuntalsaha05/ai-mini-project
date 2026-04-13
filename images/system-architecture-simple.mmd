@@ -1,0 +1,7 @@
+flowchart LR
+    U["User"] --> B["Browser"]
+    B --> FE["React Frontend (UI + Solver Logic)"]
+    B --> LS["Local Storage (Save/Settings)"]
+    FE -->|"HTTP request"| PY["Python FastAPI Server"]
+    PY -->|"Serves HTML/CSS/JS"| FE
+    PY --> H["Health Check API"]
